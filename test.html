@@ -1,0 +1,68 @@
+<html>
+   <head>
+      <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+      <style>
+         /* needed unless the API was initialized just before closing the body tag.
+         an update eliminates the need for this style to be defined by the API user. */
+         #__pb_print {
+         position: fixed;
+         bottom:0; }
+      </style>
+	  <link rel="stylesheet" href="http://www.peerbelt.com/4/style/pb-font.css">      
+      <link rel="stylesheet" href="support/test.css" media="screen">
+      <!-- the API script -->
+      <script type="text/javascript" src="pb.0.0.3.js" charset="utf-8" ></script>
+      <!-- the code utilizing the API -->
+      <script>
+         (function() {
+         	window.onload = function(){ 
+             var api = window["pbAPI"]; if (!api) { return; } 
+             api.init({}, function( status ) {
+             	if ( status ) {
+             		// Peerbelt is here
+             		document.getElementById("instrument").className = "available"; } } ); } })();
+      </script>
+   </head>
+   <body>
+      <span class="test">
+         <div>
+            <h1><span class="name">Peerbelt</span> status</h1>
+            <span class="throbber"></span>
+            <hr class="soften">
+            <span id="instrument">
+            <span class="status unavailable">UNAVAILABLE.&nbsp;&nbsp;<a href="http://www.peerbelt.com/" class="weak">GET NOW</a></span>
+            <span class="status available">READY</span>
+            </span>
+         </div>
+      </span>
+      <article>
+         <h2>Initializing Peerbelt</h2>
+         <p>It is extremely easy to detect and work with Peerbelt. The above box displays the result of
+          running just few lines of code.</p>
+         <p>Whenever Peerbelt is available and enabled in the browser, the API will pass <code>true</code>
+          into the <code>callback</code> defined on line 6. At this point, you can start making additional 
+          calls to Peerbelt.</p>
+         <p>Notice the first parameter in the <code>init()</code> call. While an empty object will allow
+          Peerbelt detection, to make privileged calls you must pass in a Peerbelt issued application 
+          identifier. The identifier tells Peerbelt what domains are owned by you. This does protect the 
+          user's privacy by not exposing browsing data bound to somebody else's Web domain.</p>
+         <pre class="prettyprint linenums">
+&lt;script type="text/javascript" src="pb.0.0.3.js" charset="utf-8" >&lt;/script>
+&lt;script>
+(function() {
+    window.onload = function(){ 
+        var api = window["pbAPI"]; if (!api) { return; } 
+        api.init({}, function(e){
+    	    if (e) {
+    		   // Peerbelt is here
+    		   document.getElementById("instrument").className = "available"; } } ); } } )();
+&lt;/script></pre>
+         <br/>
+         <h2>Requesting Application Identifiers</h2>
+         <p>Tweet <a href="https://twitter.com/peerbelt/">@peerbelt</a> with #pb-api-request to get an
+          application identifier. We queued updates to both the API and client libraries to make the 
+          environment more secure while giving you access to interesting data that helps you better serve 
+          your users.
+      </article>
+   </body>
+</html>
